@@ -4,6 +4,7 @@ import * as React from "react"
 import { Button } from "@/components/atoms/button"
 import { Input } from "@/components/atoms/input"
 import { Label } from "@/components/atoms/label"
+import { sendChatMessage } from "@/hooks/useOpenAI"
 
 interface Message {
   id: string
@@ -47,16 +48,7 @@ export default function ChatbotPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("http://localhost:8000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: userMessage.content,
-          history: messages,
-        }),
-      })
-
-      const data = await response.json()
+      const data = await sendChatMessage(userMessage.content, messages)
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -108,7 +100,7 @@ export default function ChatbotPage() {
                 <div className="absolute inset-0 rounded-full bg-fuchsia-500/20 blur-xl" />
                 <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-600 shadow-xl shadow-fuchsia-500/30">
                   <svg
-                    className="ml-4 h-7 w-7 text-white"
+                    className="h-7 w-7 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
