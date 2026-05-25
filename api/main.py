@@ -25,7 +25,11 @@ class ChatRequest(BaseModel):
 @app.post("/api/chat")
 async def chat(req: ChatRequest):
   response = client.responses.create(
+<<<<<<< HEAD
     model="gpt-5.5",
+=======
+    model="gpt-4o-mini",
+>>>>>>> 38df43abd3030a483738ef32c075cedb6d5bac34
     input=req.message,
     store=True,
   )
