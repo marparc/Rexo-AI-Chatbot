@@ -108,7 +108,7 @@ export default function ChatbotPage() {
                 <div className="absolute inset-0 rounded-full bg-fuchsia-500/20 blur-xl" />
                 <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-600 shadow-xl shadow-fuchsia-500/30">
                   <svg
-                    className="ml-4 h-7 w-7 text-white"
+                    className="h-7 w-7 text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
